@@ -63,7 +63,7 @@
 
 
     // grab the geography from the server
-    d3.json("http://www.cs.middlebury.edu/~candrews/classes/infovis/data/nz-topo.json",function (nz) {
+    d3.json("nz.json",function (nz) {
 
       var subunits = topojson.feature(nz, nz.objects.nzl_subunits),
           places = topojson.feature(nz, nz.objects.nz_places);
