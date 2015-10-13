@@ -2,28 +2,14 @@
 <meta charset="utf-8">
 <style>
 
-  .NZN{
-    fill:#cdc;
-  }
-
-  .place{
-    fill:black;
-  }
-
   .place-label{
     font-size:9pt;
   }
 
-  .region-label{
-    fill: gray;
-    fill-opacity: .5;
-    font-size: 20pt;
-    font-weight: 300;
-    text-anchor: middle;
-  }
-
   .territorial-authority {
     fill:#dcd;
+    stroke:black;
+    stroke-width:0.5;
   }
 
 </style>
@@ -61,6 +47,15 @@
           .append("path")
           .attr("d", path)
           .attr("class", "territorial-authority");
+
+              // we run through that same data again, this time producing labels for the points
+      svg.selectAll(".place-label")
+          .data(ta.features)
+        .enter().append("text")
+          .attr("class", "place-label")
+          .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
+        .attr("dx", ".5em")
+          .text(function(d) { return d.properties.TA2015_NAM; });
     });
 
     // grab the geography from the server
