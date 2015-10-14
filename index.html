@@ -7,9 +7,9 @@
   }
 
   .place-label:hover {
+    /*font-size: 9pt;
+    text-anchor: middle;*/
     display: block;
-    font-size: 9pt;
-    text-anchor: middle;
   }
 
   .territorial-authority {
@@ -18,12 +18,9 @@
     stroke-width:0.5;
   }
 
-  .territorial-authority:hover {
+  /*.territorial-authority:hover {
     fill: gray;
-    display: block;
-    font-size: 9pt;
-    text-anchor: middle;
-  }
+  }*/
 
 </style>
 <body>
@@ -69,7 +66,7 @@
           .attr("transform", function(d) {
             return "translate(" + path.centroid(d) + ")";
           })
-        .attr("dx", ".5em")
+        .attr("dx", "1em")
           .text(function(d) { return d.properties.TA2015_NAM; });
     });
 
