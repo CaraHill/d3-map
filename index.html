@@ -49,11 +49,14 @@
           .attr("class", "territorial-authority");
 
               // we run through that same data again, this time producing labels for the points
+      // debugger
       svg.selectAll(".place-label")
           .data(ta.features)
         .enter().append("text")
           .attr("class", "place-label")
-          .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
+          .attr("transform", function(d) {
+            return "translate(" + path.centroid(d) + ")";
+          })
         .attr("dx", ".5em")
           .text(function(d) { return d.properties.TA2015_NAM; });
     });
